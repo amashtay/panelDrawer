@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pCO-LJ-dcc">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Table Example Controller-->
+        <scene sceneID="Cgm-R5-h2L">
+            <objects>
+                <viewController storyboardIdentifier="TableExampleController" id="pCO-LJ-dcc" customClass="TableExampleController" customModule="PanelDrawer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vjD-hD-pDV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Stb-o2-Z6S">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="pCO-LJ-dcc" id="hdz-Ey-YSg"/>
+                                    <outlet property="delegate" destination="pCO-LJ-dcc" id="q6F-Uf-lSv"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5cl-kH-gFy">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="C3L-fa-Kvi"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Stb-o2-Z6S" firstAttribute="top" secondItem="5cl-kH-gFy" secondAttribute="bottom" id="0om-6v-1Iq"/>
+                            <constraint firstAttribute="trailing" secondItem="5cl-kH-gFy" secondAttribute="trailing" id="EVd-Mf-Iu3"/>
+                            <constraint firstItem="5cl-kH-gFy" firstAttribute="leading" secondItem="vjD-hD-pDV" secondAttribute="leading" id="IiK-1s-1cR"/>
+                            <constraint firstItem="Stb-o2-Z6S" firstAttribute="leading" secondItem="vjD-hD-pDV" secondAttribute="leading" id="OrL-Tf-tD2"/>
+                            <constraint firstAttribute="trailing" secondItem="Stb-o2-Z6S" secondAttribute="trailing" id="kMp-xE-N2g"/>
+                            <constraint firstItem="5cl-kH-gFy" firstAttribute="top" secondItem="vjD-hD-pDV" secondAttribute="top" id="q4u-4F-aPU"/>
+                            <constraint firstAttribute="bottom" secondItem="Stb-o2-Z6S" secondAttribute="bottom" id="t27-ex-ETS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Stb-o2-Z6S" id="6Z0-PJ-u5d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m6E-pc-pZa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-455" y="133"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

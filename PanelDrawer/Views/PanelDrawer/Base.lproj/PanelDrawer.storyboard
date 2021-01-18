@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Panel Drawer Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="PanelDrawerController" customModule="PanelDrawer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EEo-Sd-XCa">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                            </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KAc-65-mPf">
+                                <rect key="frame" x="8" y="120" width="359" height="800"/>
+                                <subviews>
+                                    <visualEffectView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uHE-kE-y0M">
+                                        <rect key="frame" x="0.0" y="40" width="359" height="760"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="o0a-A1-F8U">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="760"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <gestureRecognizers/>
+                                        </view>
+                                        <blurEffect style="prominent"/>
+                                    </visualEffectView>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fkR-aA-qz3" userLabel="Panel Handler View">
+                                        <rect key="frame" x="157.5" y="24" width="44" height="4"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Szo-Bh-Y0w">
+                                            <rect key="frame" x="0.0" y="0.0" width="44" height="4"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="4" id="14i-Ut-FK6"/>
+                                            <constraint firstAttribute="width" constant="44" id="ivR-zU-3Y7"/>
+                                        </constraints>
+                                        <blurEffect style="regular"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </visualEffectView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="uHE-kE-y0M" firstAttribute="top" secondItem="fkR-aA-qz3" secondAttribute="top" constant="16" id="D4Y-4j-XC5"/>
+                                    <constraint firstAttribute="trailing" secondItem="uHE-kE-y0M" secondAttribute="trailing" id="VKx-qa-pVf"/>
+                                    <constraint firstItem="fkR-aA-qz3" firstAttribute="top" secondItem="KAc-65-mPf" secondAttribute="top" constant="24" id="bSN-fr-AzT"/>
+                                    <constraint firstAttribute="bottom" secondItem="uHE-kE-y0M" secondAttribute="bottom" id="dPs-rP-SeX"/>
+                                    <constraint firstItem="fkR-aA-qz3" firstAttribute="centerX" secondItem="KAc-65-mPf" secondAttribute="centerX" id="k4A-Aa-ybU"/>
+                                    <constraint firstAttribute="height" constant="800" id="xIK-oD-2mN"/>
+                                    <constraint firstItem="uHE-kE-y0M" firstAttribute="leading" secondItem="KAc-65-mPf" secondAttribute="leading" id="zTl-Tv-kUV"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="439-MO-uhz" appends="YES" id="Drb-eV-Eei"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="EEo-Sd-XCa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="0kw-P2-Vdp"/>
+                            <constraint firstItem="KAc-65-mPf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="120" id="Lp5-zh-aHa"/>
+                            <constraint firstAttribute="bottom" secondItem="EEo-Sd-XCa" secondAttribute="bottom" id="e1X-GK-Gma"/>
+                            <constraint firstItem="EEo-Sd-XCa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gJc-wS-m6b"/>
+                            <constraint firstItem="KAc-65-mPf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="nlp-nR-lUZ"/>
+                            <constraint firstAttribute="trailing" secondItem="EEo-Sd-XCa" secondAttribute="trailing" id="vK7-uX-ZCd"/>
+                            <constraint firstAttribute="trailing" secondItem="KAc-65-mPf" secondAttribute="trailing" constant="8" id="zsJ-sP-SrJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mainView" destination="EEo-Sd-XCa" id="J7R-S3-ZAr"/>
+                        <outlet property="panGestureRecognizer" destination="439-MO-uhz" id="NPL-Eh-7n9"/>
+                        <outlet property="panelHeightConstraint" destination="xIK-oD-2mN" id="cxi-Zd-qdP"/>
+                        <outlet property="panelTopInsetConstaint" destination="Lp5-zh-aHa" id="Wa6-ug-6Tq"/>
+                        <outlet property="panelView" destination="KAc-65-mPf" id="0HU-xM-OqS"/>
+                        <outlet property="panelVisualEffectView" destination="uHE-kE-y0M" id="ug7-vp-ef6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="439-MO-uhz">
+                    <connections>
+                        <action selector="panGestureHandler:" destination="BYZ-38-t0r" id="15m-eB-ViZ"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="139" y="124"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="kJs-hR-ZH4">
+            <objects>
+                <viewController storyboardIdentifier="ExampleController" id="b9s-k9-ilj" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aVO-BU-bjf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="IS1-Ah-w2Z"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ls3-Pi-O8s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1209" y="124"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
