@@ -11,14 +11,14 @@ class TableExampleController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    var delegateChangedScrollViewContentOffsetCompletion: ((CGPoint) -> ())?
+    var scrollViewChangedContentOffsetCompletion: ((CGPoint) -> ())?
 
 }
 
 extension TableExampleController: UITableViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        delegateChangedScrollViewContentOffsetCompletion?(scrollView.contentOffset)
+        scrollViewChangedContentOffsetCompletion?(scrollView.contentOffset)
     }
 
 }
@@ -37,15 +37,10 @@ extension TableExampleController: UITableViewDataSource {
 
 }
 
-extension TableExampleController: PanelDrawerDelegate {
+extension TableExampleController: PanelDrawerScrollDelegate {
 
-    func panelDrawerChangedState(with state: PanelDrawerState) {
-        switch state {
-            case .full:
-                tableView.isScrollEnabled = true
-            default:
-                tableView.isScrollEnabled = false
-        }
+    func panelDrawerChangedState(with scrollingEnabled: Bool) {
+        tableView.isScrollEnabled = scrollingEnabled
     }
 
 }

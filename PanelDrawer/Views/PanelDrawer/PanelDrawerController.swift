@@ -13,16 +13,16 @@ enum PanelDrawerState {
     case small
 }
 
-protocol PanelDrawerDelegate: AnyObject {
-    func panelDrawerChangedState(with state: PanelDrawerState)
-    var delegateChangedScrollViewContentOffsetCompletion: ((CGPoint) -> ())? { get set }
+protocol PanelDrawerScrollDelegate: AnyObject {
+    func panelDrawerChangedState(with scrollingEnabled: Bool)
+    var scrollViewChangedContentOffsetCompletion: ((CGPoint) -> ())? { get set }
 }
 
 class PanelDrawerController: UIViewController {
 
-    weak var delegate: PanelDrawerDelegate?
+    weak var delegate: PanelDrawerScrollDelegate?
 
-    var panelDrawerController: (UIViewController & PanelDrawerDelegate)!
+    var panelDrawerController: UIViewController!
     var mainController: UIViewController?
 
     @IBOutlet weak var mainView: UIView!
@@ -110,9 +110,10 @@ class PanelDrawerController: UIViewController {
         panelDrawerController.view.frame = panelVisualEffectView.contentView.bounds
         panelVisualEffectView.contentView.addSubview(panelDrawerController.view)
         panelDrawerController.didMove(toParent: self)
-        delegate = panelDrawerController
 
-        delegate?.delegateChangedScrollViewContentOffsetCompletion = { [weak self] offset in
+        delegate = panelDrawerController as? PanelDrawerScrollDelegate
+
+        delegate?.scrollViewChangedContentOffsetCompletion = { [weak self] offset in
             guard let self = self else { return }
             if (offset.y <= self.containerScrollViewMaxYContentOffset) {
                 self.animatePanel(with: .half)
@@ -130,7 +131,7 @@ class PanelDrawerController: UIViewController {
 
 
     private func animatePanel(with state: PanelDrawerState) {
-        self.delegate?.panelDrawerChangedState(with: state)
+        self.delegate?.panelDrawerChangedState(with: state == .full)
         UIView.animate(withDuration: 0.7,
                        delay: 0.0,
                        usingSpringWithDamping: 0.7,
