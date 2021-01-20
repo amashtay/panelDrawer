@@ -151,14 +151,25 @@ class PanelDrawerController: UIViewController {
 
 
     private func configurePanelView() {
-        panelView.layer.masksToBounds = false
-        panelView.layer.shadowColor = UIColor.black.cgColor
-        panelView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        panelView.layer.shadowRadius = 8
-        panelView.layer.shadowOpacity = 0.24
-        panelVisualEffectView.layer.cornerRadius = 24
-        panelVisualEffectView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        panelView.layer.configureLayerShadow()
+        panelVisualEffectView.layer.configureCorners(maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
     }
 
 }
 
+private extension CALayer {
+
+    func configureLayerShadow() {
+        masksToBounds = false
+        shadowColor = UIColor.black.cgColor
+        shadowOffset = CGSize(width: 0, height: 2)
+        shadowRadius = 8
+        shadowOpacity = 0.24
+    }
+
+    func configureCorners(maskedCorners: CACornerMask) {
+        cornerRadius = 24
+        self.maskedCorners = maskedCorners
+    }
+
+}
