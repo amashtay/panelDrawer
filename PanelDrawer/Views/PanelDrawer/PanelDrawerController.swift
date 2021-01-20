@@ -27,6 +27,8 @@ class PanelDrawerController: UIViewController {
 
     @IBOutlet weak var mainView: UIView!
 
+    @IBOutlet weak var panelHandlerView: UIVisualEffectView!
+    
     @IBOutlet weak var panelView: UIView!
     @IBOutlet weak var panelVisualEffectView: UIVisualEffectView!
     @IBOutlet weak var panGestureRecognizer: UIPanGestureRecognizer!
@@ -153,6 +155,7 @@ class PanelDrawerController: UIViewController {
     private func configurePanelView() {
         panelView.layer.configureLayerShadow()
         panelVisualEffectView.layer.configureCorners(maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
+        panelHandlerView.layer.cornerRadius = panelHandlerView.layer.bounds.height / 2
     }
 
 }
