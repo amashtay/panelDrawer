@@ -13,17 +13,15 @@ enum PanelDrawerState {
     case small
 }
 
-protocol PanelDrawerScrollDelegate: AnyObject {
-    func panelDrawerChangedState(with scrollingEnabled: Bool)
-    var scrollViewChangedContentOffsetCompletion: ((CGPoint) -> ())? { get set }
+protocol ScrollablePanelDrawer: AnyObject {
+    var scrollView: UIScrollView? { get }
 }
 
 class PanelDrawerController: UIViewController {
 
-    weak var delegate: PanelDrawerScrollDelegate?
-
     var panelDrawerController: UIViewController!
     var mainController: UIViewController?
+    weak var panelScrollView: UIScrollView?
 
     @IBOutlet weak var mainView: UIView!
 
@@ -51,6 +49,8 @@ class PanelDrawerController: UIViewController {
         super.viewDidLoad()
         configure()
         configurePanelView()
+
+        panGestureRecognizer.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -60,15 +60,15 @@ class PanelDrawerController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        animatePanel(with: panelState)
+        configurePanel(with: panelState)
     }
 
 
     // MARK: IBActions
 
     @IBAction func panGestureHandler(_ sender: UIPanGestureRecognizer) {
-        let translation = sender.translation(in: view)
-        let velocity = sender.velocity(in: view)
+        let translation = sender.translation(in: panelView)
+        let velocity = sender.velocity(in: panelView)
         let y = panelTopInsetConstaint.constant + translation.y
 
         if (y >= topInsetFull && y <= topInsetSmall) {
@@ -93,7 +93,7 @@ class PanelDrawerController: UIViewController {
                         panelState = .half
                     }
             }
-            animatePanel(with: panelState)
+            configurePanel(with: panelState)
         }
     }
 
@@ -113,27 +113,23 @@ class PanelDrawerController: UIViewController {
         panelVisualEffectView.contentView.addSubview(panelDrawerController.view)
         panelDrawerController.didMove(toParent: self)
 
-        delegate = panelDrawerController as? PanelDrawerScrollDelegate
-
-        delegate?.scrollViewChangedContentOffsetCompletion = { [weak self] offset in
-            guard let self = self else { return }
-            if (offset.y <= self.containerScrollViewMaxYContentOffset) {
-                self.animatePanel(with: .half)
-            }
-        }
+        panelScrollView = (panelDrawerController as? ScrollablePanelDrawer)?.scrollView
     }
 
     private func setupInitialPanelConstaints() {
         panelView.isHidden = false
         panelHeightConstraint.constant = UIScreen.main.bounds.height - topInsetFull + bottomContentInsetPanel
 
-        self.panelTopInsetConstaint.constant = topInsetSmall
-        self.panelState = .small
+        panelTopInsetConstaint.constant = topInsetSmall
+        panelState = .small
     }
 
+    private func configurePanel(with state: PanelDrawerState) {
+        panelScrollView?.isScrollEnabled = (state == .full)
+        animatePanel(with: state)
+    }
 
     private func animatePanel(with state: PanelDrawerState) {
-        self.delegate?.panelDrawerChangedState(with: state == .full)
         UIView.animate(withDuration: 0.7,
                        delay: 0.0,
                        usingSpringWithDamping: 0.7,
@@ -159,6 +155,30 @@ class PanelDrawerController: UIViewController {
     }
 
 }
+
+extension PanelDrawerController: UIGestureRecognizerDelegate {
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+
+        guard let gesture = gestureRecognizer as? UIPanGestureRecognizer,
+              let scrollView = panelScrollView else { return false }
+
+        let direction = gesture.velocity(in: view).y
+        let y = panelTopInsetConstaint.constant
+
+        let scrollContentOffset = scrollView.contentOffset
+
+        if (y == topInsetFull && scrollContentOffset.y <= 0 && direction > 0) || (y == topInsetSmall) || (y == topInsetHalf) {
+            scrollView.isScrollEnabled = false
+        } else {
+            scrollView.isScrollEnabled = true
+        }
+
+        return false
+    }
+
+}
+
 
 private extension CALayer {
 

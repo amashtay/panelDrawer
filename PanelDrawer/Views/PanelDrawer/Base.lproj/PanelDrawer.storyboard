@@ -135,7 +135,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IS1-Ah-w2Z"/>
-                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray2Color"/>
                         <constraints>
                             <constraint firstItem="IS1-Ah-w2Z" firstAttribute="bottom" secondItem="u1w-IV-aC5" secondAttribute="bottom" constant="30" id="1RJ-1M-Z2Q"/>
                             <constraint firstItem="coh-dK-OCG" firstAttribute="centerY" secondItem="u1w-IV-aC5" secondAttribute="centerY" id="28P-cU-82w"/>
@@ -175,9 +175,6 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

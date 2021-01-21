@@ -11,16 +11,6 @@ class TableExampleController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    var scrollViewChangedContentOffsetCompletion: ((CGPoint) -> ())?
-
-}
-
-extension TableExampleController: UITableViewDelegate {
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollViewChangedContentOffsetCompletion?(scrollView.contentOffset)
-    }
-
 }
 
 extension TableExampleController: UITableViewDataSource {
@@ -38,10 +28,19 @@ extension TableExampleController: UITableViewDataSource {
 
 }
 
-extension TableExampleController: PanelDrawerScrollDelegate {
+extension TableExampleController: UITableViewDelegate {
 
-    func panelDrawerChangedState(with scrollingEnabled: Bool) {
-        tableView.isScrollEnabled = scrollingEnabled
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+}
+
+
+extension TableExampleController: ScrollablePanelDrawer {
+
+    var scrollView: UIScrollView? {
+        tableView
     }
 
 }
