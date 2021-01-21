@@ -39,8 +39,6 @@ class PanelDrawerController: UIViewController {
     private let topInsetSmall: CGFloat =  UIScreen.main.bounds.height - 90
     private let bottomContentInsetPanel: CGFloat = 4
 
-    private let containerScrollViewMaxYContentOffset: CGFloat = -80
-
     private var panelState: PanelDrawerState = .small
 
     // MARK: View's lifecycle
