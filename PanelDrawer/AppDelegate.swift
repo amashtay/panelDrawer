@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         controller.mainController = mainVC
 
         let tableExampleSb = UIStoryboard(name: "TableExample", bundle: nil)
-        let tableVC = tableExampleSb.instantiateInitialViewController() as! TableExampleController
+        let tableVC = tableExampleSb.instantiateInitialViewController()
         controller.panelDrawerController = tableVC
 
         window?.rootViewController = controller
