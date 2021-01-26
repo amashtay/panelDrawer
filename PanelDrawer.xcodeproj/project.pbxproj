@@ -14,6 +14,12 @@
 		111CBA2825B5FBDA005EED7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 111CBA2625B5FBDA005EED7E /* LaunchScreen.storyboard */; };
 		112460F625C089DD00A4944D /* RootExample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 112460F525C089DD00A4944D /* RootExample.storyboard */; };
 		112460FF25C094CC00A4944D /* RootExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112460FE25C094CC00A4944D /* RootExampleViewController.swift */; };
+		1124610625C097FC00A4944D /* PanelTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1124610525C097FC00A4944D /* PanelTransition.swift */; };
+		1124610A25C0984A00A4944D /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1124610925C0984A00A4944D /* PresentationController.swift */; };
+		1124610D25C09A9100A4944D /* DimmPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1124610C25C09A9100A4944D /* DimmPresentationController.swift */; };
+		1124611025C09CFA00A4944D /* AnotherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1124610F25C09CFA00A4944D /* AnotherViewController.swift */; };
+		1124611425C09DCC00A4944D /* PresentAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1124611325C09DCC00A4944D /* PresentAnimation.swift */; };
+		1124611725C09F8600A4944D /* DismissAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1124611625C09F8600A4944D /* DismissAnimation.swift */; };
 		11CF3C6925B63FF800825EFF /* TableExample.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11CF3C6825B63FF800825EFF /* TableExample.storyboard */; };
 		11CF3C6C25B6400F00825EFF /* TableExampleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CF3C6B25B6400F00825EFF /* TableExampleController.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +34,12 @@
 		111CBA2925B5FBDA005EED7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		112460F525C089DD00A4944D /* RootExample.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RootExample.storyboard; sourceTree = "<group>"; };
 		112460FE25C094CC00A4944D /* RootExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootExampleViewController.swift; sourceTree = "<group>"; };
+		1124610525C097FC00A4944D /* PanelTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelTransition.swift; sourceTree = "<group>"; };
+		1124610925C0984A00A4944D /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		1124610C25C09A9100A4944D /* DimmPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmPresentationController.swift; sourceTree = "<group>"; };
+		1124610F25C09CFA00A4944D /* AnotherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherViewController.swift; sourceTree = "<group>"; };
+		1124611325C09DCC00A4944D /* PresentAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentAnimation.swift; sourceTree = "<group>"; };
+		1124611625C09F8600A4944D /* DismissAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAnimation.swift; sourceTree = "<group>"; };
 		11CF3C6825B63FF800825EFF /* TableExample.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TableExample.storyboard; sourceTree = "<group>"; };
 		11CF3C6B25B6400F00825EFF /* TableExampleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableExampleController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				111CBA3325B5FE49005EED7E /* PanelDrawer */,
+				1124610425C097E400A4944D /* PanelTransition */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -103,8 +116,29 @@
 			children = (
 				112460F525C089DD00A4944D /* RootExample.storyboard */,
 				112460FE25C094CC00A4944D /* RootExampleViewController.swift */,
+				1124610F25C09CFA00A4944D /* AnotherViewController.swift */,
 			);
 			path = RootExample;
+			sourceTree = "<group>";
+		};
+		1124610425C097E400A4944D /* PanelTransition */ = {
+			isa = PBXGroup;
+			children = (
+				1124611225C09DB400A4944D /* Animation */,
+				1124610525C097FC00A4944D /* PanelTransition.swift */,
+				1124610925C0984A00A4944D /* PresentationController.swift */,
+				1124610C25C09A9100A4944D /* DimmPresentationController.swift */,
+			);
+			path = PanelTransition;
+			sourceTree = "<group>";
+		};
+		1124611225C09DB400A4944D /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				1124611325C09DCC00A4944D /* PresentAnimation.swift */,
+				1124611625C09F8600A4944D /* DismissAnimation.swift */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		11CF3C6725B63FE100825EFF /* TableExample */ = {
@@ -189,9 +223,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				111CBA2025B5FBDA005EED7E /* PanelDrawerController.swift in Sources */,
+				1124611725C09F8600A4944D /* DismissAnimation.swift in Sources */,
 				112460FF25C094CC00A4944D /* RootExampleViewController.swift in Sources */,
+				1124610D25C09A9100A4944D /* DimmPresentationController.swift in Sources */,
 				111CBA1C25B5FBDA005EED7E /* AppDelegate.swift in Sources */,
+				1124610625C097FC00A4944D /* PanelTransition.swift in Sources */,
 				11CF3C6C25B6400F00825EFF /* TableExampleController.swift in Sources */,
+				1124611025C09CFA00A4944D /* AnotherViewController.swift in Sources */,
+				1124611425C09DCC00A4944D /* PresentAnimation.swift in Sources */,
+				1124610A25C0984A00A4944D /* PresentationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

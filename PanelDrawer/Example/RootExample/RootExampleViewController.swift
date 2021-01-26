@@ -9,19 +9,26 @@ import UIKit
 
 class RootExampleViewController: UIViewController {
 
+    private let transition = PanelTransition()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        presentSomething()
+        presentExample()
     }
     
-    private func presentSomething() {
+    @IBAction func valueChanged(_ sender: Any) {
+        presentExample()
+    }
+    private func presentExample() {
         
         let anotherExampleSb = UIStoryboard(name: "RootExample", bundle: nil)
         let anotherVC = anotherExampleSb.instantiateViewController(withIdentifier: "AnotherExampleController")
+        anotherVC.transitioningDelegate = transition
+        anotherVC.modalPresentationStyle = .custom
         present(anotherVC, animated: true)
     }
 
