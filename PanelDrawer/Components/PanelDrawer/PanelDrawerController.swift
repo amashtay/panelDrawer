@@ -10,7 +10,7 @@ import UIKit
 enum PanelDrawerState {
     case full
     case half
-    case small
+    case initial
 }
 
 protocol ScrollablePanelDrawer: AnyObject {
@@ -22,6 +22,12 @@ class PanelDrawerController: UIViewController {
     var panelDrawerController: UIViewController!
     var mainController: UIViewController?
     weak var panelScrollView: UIScrollView?
+    
+    var topInsetFull: CGFloat = 44
+    var topInsetHalf: CGFloat = UIScreen.main.bounds.height / 2
+    var topInsetSmall: CGFloat =  UIScreen.main.bounds.height - 120
+    var leftInset: CGFloat = 0
+    var rightInset: CGFloat = 0
 
     @IBOutlet weak var mainView: UIView!
 
@@ -33,13 +39,11 @@ class PanelDrawerController: UIViewController {
 
     @IBOutlet weak var panelTopInsetConstaint: NSLayoutConstraint!
     @IBOutlet weak var panelHeightConstraint: NSLayoutConstraint!
-
-    private let topInsetFull: CGFloat = 120
-    private let topInsetHalf: CGFloat = UIScreen.main.bounds.height / 2
-    private let topInsetSmall: CGFloat =  UIScreen.main.bounds.height - 90
+    @IBOutlet weak var panelLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var panelTrailingConstraint: NSLayoutConstraint!
+    
+    private var panelState: PanelDrawerState = .initial
     private let bottomContentInsetPanel: CGFloat = 4
-
-    private var panelState: PanelDrawerState = .small
 
     // MARK: View's lifecycle
 
@@ -55,12 +59,6 @@ class PanelDrawerController: UIViewController {
         super.viewWillAppear(animated)
         setupInitialPanelConstaints()
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        configurePanel(with: panelState)
-    }
-
 
     // MARK: IBActions
 
@@ -78,13 +76,13 @@ class PanelDrawerController: UIViewController {
             switch panelState {
                 case .full:
                     if (y >= topInsetHalf) {
-                        panelState = .small
+                        panelState = .initial
                     } else if (velocity.y > 0) {
                         panelState = .half
                     }
                 case .half:
-                    panelState = velocity.y > 0 ? .small : .full
-                case .small:
+                    panelState = velocity.y > 0 ? .initial : .full
+                case .initial:
                     if (y < topInsetHalf) {
                         panelState = .full
                     } else if (velocity.y < 0) {
@@ -98,7 +96,6 @@ class PanelDrawerController: UIViewController {
     // MARK: Private
 
     private func configure() {
-
         if let mainController = mainController {
             addChild(mainController)
             mainController.view.frame = mainView.bounds
@@ -116,10 +113,11 @@ class PanelDrawerController: UIViewController {
 
     private func setupInitialPanelConstaints() {
         panelView.isHidden = false
+        panelLeadingConstraint.constant = leftInset
+        panelTrailingConstraint.constant = rightInset
         panelHeightConstraint.constant = UIScreen.main.bounds.height - topInsetFull + bottomContentInsetPanel
-
         panelTopInsetConstaint.constant = topInsetSmall
-        panelState = .small
+        panelState = .initial
     }
 
     private func configurePanel(with state: PanelDrawerState) {
@@ -138,13 +136,12 @@ class PanelDrawerController: UIViewController {
                     self.panelTopInsetConstaint.constant = self.topInsetFull
                 case .half:
                     self.panelTopInsetConstaint.constant = self.topInsetHalf
-                case .small:
+                case .initial:
                     self.setupInitialPanelConstaints()
             }
             self.view.layoutIfNeeded()
         }
     }
-
 
     private func configurePanelView() {
         panelView.layer.configureLayerShadow()

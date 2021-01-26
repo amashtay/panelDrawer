@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "PanelDrawer", bundle: nil)
         let controller = storyboard.instantiateInitialViewController() as! PanelDrawerController
 
-        let mainVC = storyboard.instantiateViewController(identifier: "ExampleController")
+        let rootExampleSb = UIStoryboard(name: "RootExample", bundle: nil)
+        let mainVC = rootExampleSb.instantiateViewController(withIdentifier: "ExampleController")
         controller.mainController = mainVC
 
         let tableExampleSb = UIStoryboard(name: "TableExample", bundle: nil)
