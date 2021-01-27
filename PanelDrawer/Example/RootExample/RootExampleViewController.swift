@@ -38,6 +38,8 @@ class RootExampleViewController: UIViewController {
     private func presentTableExample() {
         let tableExampleSb = UIStoryboard(name: "TableExample", bundle: nil)
         let tableVC = tableExampleSb.instantiateInitialViewController()!
+        tableVC.view.clipsToBounds = true
+        tableVC.view.layer.cornerRadius = 24
         transition = PanelTransition(presented: tableVC, presenting: self)
         tableVC.transitioningDelegate = transition
         tableVC.modalPresentationStyle = .custom
