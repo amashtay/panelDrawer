@@ -17,11 +17,11 @@ class TransitionDriver: UIPercentDrivenInteractiveTransition {
     var direction: TransitionDirection = .present
 
     
-    private var presentedController: UIViewController?
-    private var presentingController: UIViewController?
+    private weak var presentedController: UIViewController?
+    private weak var presentingController: UIViewController?
     private var panRecognizer: UIPanGestureRecognizer?
     
-
+    weak var scrollView: UIScrollView?
     
     // MARK: Overridden
     
@@ -43,6 +43,12 @@ class TransitionDriver: UIPercentDrivenInteractiveTransition {
         
         panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handle(recognizer:)))
         presentedController?.view.addGestureRecognizer(panRecognizer!)
+        
+        panRecognizer?.delegate = self
+        
+        if let scrollableVC = presentedController as? ScrollablePanelDrawer {
+            scrollView = scrollableVC.scrollView
+        }
     }
     
     
@@ -88,6 +94,7 @@ extension TransitionDriver {
             if r.isProjectedToDownHalf(maxTranslation: maxTranslation) {
                 cancel()
             } else {
+                scrollView?.isScrollEnabled = true
                 finish()
             }
             
@@ -115,6 +122,7 @@ extension TransitionDriver {
             if r.isProjectedToDownHalf(maxTranslation: maxTranslation) {
                 finish()
             } else {
+                scrollView?.isScrollEnabled = true
                 cancel()
             }
 
@@ -125,6 +133,29 @@ extension TransitionDriver {
             break
         }
     }
+    
+}
+
+extension TransitionDriver: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+
+        guard let gesture = gestureRecognizer as? UIPanGestureRecognizer,
+              let scrollView = scrollView else { return false }
+
+        let direction = gesture.velocity(in: presentingController!.view).y
+
+        let scrollContentOffset = scrollView.contentOffset
+
+        if (scrollContentOffset.y <= 0 && direction >= 0) {
+            scrollView.isScrollEnabled = false
+        } else {
+            scrollView.isScrollEnabled = true
+        }
+
+        return false
+    }
+    
     
 }
 

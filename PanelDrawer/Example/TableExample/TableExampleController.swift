@@ -33,6 +33,14 @@ extension TableExampleController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let direction = scrollView.panGestureRecognizer.velocity(in: view).y
+//        print(direction)
+//        if (scrollView.contentOffset.y <= 0 && direction > 0) {
+//            dismiss(animated: true, completion: nil)
+//        }
+//    }
 
 }
 
