@@ -9,12 +9,20 @@ import UIKit
 
 class PresentationController: UIPresentationController {
     
+    var driver: TransitionDriver!
+        
     private lazy var dimmView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(white: 0, alpha: 0.7)
         view.alpha = 0
         return view
     }()
+    
+    // MARK: Overridden
+    
+    override var shouldPresentInFullscreen: Bool {
+        return false
+    }
     
     override var frameOfPresentedViewInContainerView: CGRect {
         let bounds = containerView!.bounds
@@ -38,6 +46,8 @@ class PresentationController: UIPresentationController {
         super.presentationTransitionDidEnd(completed)
         if !completed {
             self.dimmView.removeFromSuperview()
+        } else {
+            driver.direction = .dismiss
         }
     }
     
@@ -59,6 +69,7 @@ class PresentationController: UIPresentationController {
         super.dismissalTransitionDidEnd(completed)
         if completed {
             self.dimmView.removeFromSuperview()
+            driver.direction = .present
         }
     }
     

@@ -22,7 +22,7 @@ extension TableExampleController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = "\(indexPath.row)"
-        cell.backgroundColor = UIColor.clear
+        //cell.backgroundColor = UIColor.clear
         return cell
     }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11037C1C25C1FCC10087190F /* TransitionDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11037C1B25C1FCC10087190F /* TransitionDriver.swift */; };
+		11037C2025C205240087190F /* CGPoint+Velocity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11037C1F25C205240087190F /* CGPoint+Velocity.swift */; };
 		111CBA1C25B5FBDA005EED7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111CBA1B25B5FBDA005EED7E /* AppDelegate.swift */; };
 		111CBA2025B5FBDA005EED7E /* PanelDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111CBA1F25B5FBDA005EED7E /* PanelDrawerController.swift */; };
 		111CBA2325B5FBDA005EED7E /* PanelDrawer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 111CBA2125B5FBDA005EED7E /* PanelDrawer.storyboard */; };
@@ -16,7 +18,6 @@
 		112460FF25C094CC00A4944D /* RootExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112460FE25C094CC00A4944D /* RootExampleViewController.swift */; };
 		1124610625C097FC00A4944D /* PanelTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1124610525C097FC00A4944D /* PanelTransition.swift */; };
 		1124610A25C0984A00A4944D /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1124610925C0984A00A4944D /* PresentationController.swift */; };
-		1124610D25C09A9100A4944D /* DimmPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1124610C25C09A9100A4944D /* DimmPresentationController.swift */; };
 		1124611025C09CFA00A4944D /* AnotherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1124610F25C09CFA00A4944D /* AnotherViewController.swift */; };
 		1124611425C09DCC00A4944D /* PresentAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1124611325C09DCC00A4944D /* PresentAnimation.swift */; };
 		1124611725C09F8600A4944D /* DismissAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1124611625C09F8600A4944D /* DismissAnimation.swift */; };
@@ -25,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11037C1B25C1FCC10087190F /* TransitionDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDriver.swift; sourceTree = "<group>"; };
+		11037C1F25C205240087190F /* CGPoint+Velocity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Velocity.swift"; sourceTree = "<group>"; };
 		111CBA1825B5FBDA005EED7E /* PanelDrawer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PanelDrawer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		111CBA1B25B5FBDA005EED7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		111CBA1F25B5FBDA005EED7E /* PanelDrawerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelDrawerController.swift; sourceTree = "<group>"; };
@@ -36,7 +39,6 @@
 		112460FE25C094CC00A4944D /* RootExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootExampleViewController.swift; sourceTree = "<group>"; };
 		1124610525C097FC00A4944D /* PanelTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelTransition.swift; sourceTree = "<group>"; };
 		1124610925C0984A00A4944D /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
-		1124610C25C09A9100A4944D /* DimmPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmPresentationController.swift; sourceTree = "<group>"; };
 		1124610F25C09CFA00A4944D /* AnotherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherViewController.swift; sourceTree = "<group>"; };
 		1124611325C09DCC00A4944D /* PresentAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentAnimation.swift; sourceTree = "<group>"; };
 		1124611625C09F8600A4944D /* DismissAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAnimation.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11037C1E25C2050D0087190F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				11037C1F25C205240087190F /* CGPoint+Velocity.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		111CBA0F25B5FBDA005EED7E = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +84,7 @@
 		111CBA1A25B5FBDA005EED7E /* PanelDrawer */ = {
 			isa = PBXGroup;
 			children = (
+				11037C1E25C2050D0087190F /* Extensions */,
 				112460F225C088CA00A4944D /* Components */,
 				112460F025C088A900A4944D /* Example */,
 				111CBA1B25B5FBDA005EED7E /* AppDelegate.swift */,
@@ -127,7 +138,7 @@
 				1124611225C09DB400A4944D /* Animation */,
 				1124610525C097FC00A4944D /* PanelTransition.swift */,
 				1124610925C0984A00A4944D /* PresentationController.swift */,
-				1124610C25C09A9100A4944D /* DimmPresentationController.swift */,
+				11037C1B25C1FCC10087190F /* TransitionDriver.swift */,
 			);
 			path = PanelTransition;
 			sourceTree = "<group>";
@@ -225,12 +236,13 @@
 				111CBA2025B5FBDA005EED7E /* PanelDrawerController.swift in Sources */,
 				1124611725C09F8600A4944D /* DismissAnimation.swift in Sources */,
 				112460FF25C094CC00A4944D /* RootExampleViewController.swift in Sources */,
-				1124610D25C09A9100A4944D /* DimmPresentationController.swift in Sources */,
 				111CBA1C25B5FBDA005EED7E /* AppDelegate.swift in Sources */,
 				1124610625C097FC00A4944D /* PanelTransition.swift in Sources */,
 				11CF3C6C25B6400F00825EFF /* TableExampleController.swift in Sources */,
+				11037C1C25C1FCC10087190F /* TransitionDriver.swift in Sources */,
 				1124611025C09CFA00A4944D /* AnotherViewController.swift in Sources */,
 				1124611425C09DCC00A4944D /* PresentAnimation.swift in Sources */,
+				11037C2025C205240087190F /* CGPoint+Velocity.swift in Sources */,
 				1124610A25C0984A00A4944D /* PresentationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

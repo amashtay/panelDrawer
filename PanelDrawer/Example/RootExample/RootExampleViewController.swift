@@ -9,7 +9,7 @@ import UIKit
 
 class RootExampleViewController: UIViewController {
 
-    private let transition = PanelTransition()
+    private var transition: PanelTransition?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,19 +17,31 @@ class RootExampleViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        presentExample()
+        //presentExample()
     }
     
     @IBAction func valueChanged(_ sender: Any) {
-        presentExample()
+        //presentExample()
+        presentTableExample()
     }
+    
     private func presentExample() {
-        
         let anotherExampleSb = UIStoryboard(name: "RootExample", bundle: nil)
         let anotherVC = anotherExampleSb.instantiateViewController(withIdentifier: "AnotherExampleController")
+        
+        transition = PanelTransition(presented: anotherVC, presenting: self)
         anotherVC.transitioningDelegate = transition
         anotherVC.modalPresentationStyle = .custom
         present(anotherVC, animated: true)
     }
 
+    private func presentTableExample() {
+        let tableExampleSb = UIStoryboard(name: "TableExample", bundle: nil)
+        let tableVC = tableExampleSb.instantiateInitialViewController()!
+        transition = PanelTransition(presented: tableVC, presenting: self)
+        tableVC.transitioningDelegate = transition
+        tableVC.modalPresentationStyle = .custom
+        present(tableVC, animated: true)
+    }
+    
 }
