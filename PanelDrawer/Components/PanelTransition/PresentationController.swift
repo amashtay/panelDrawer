@@ -25,12 +25,13 @@ class PresentationController: UIPresentationController {
     }
     
     override var frameOfPresentedViewInContainerView: CGRect {
+        let topInset: CGFloat = 64
         let bounds = containerView!.bounds
-        let halfHeight = bounds.height / 2
+        let presentedHeight = bounds.height - topInset
         return CGRect(x: 0,
-                      y: halfHeight,
+                      y: topInset,
                       width: bounds.width,
-                      height: halfHeight)
+                      height: presentedHeight)
     }
     
     override func presentationTransitionWillBegin() {
