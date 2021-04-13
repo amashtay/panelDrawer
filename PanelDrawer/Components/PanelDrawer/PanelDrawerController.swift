@@ -54,6 +54,11 @@ class PanelDrawerController: UIViewController {
 
         panGestureRecognizer.delegate = self
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setFrames()
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -98,17 +103,22 @@ class PanelDrawerController: UIViewController {
     private func configure() {
         if let mainController = mainController {
             addChild(mainController)
-            mainController.view.frame = mainView.bounds
             mainView.addSubview(mainController.view)
             mainController.didMove(toParent: self)
         }
 
         addChild(panelDrawerController)
-        panelDrawerController.view.frame = panelVisualEffectView.contentView.bounds
         panelVisualEffectView.contentView.addSubview(panelDrawerController.view)
         panelDrawerController.didMove(toParent: self)
 
         panelScrollView = (panelDrawerController as? ScrollablePanelDrawer)?.scrollView
+    }
+    
+    private func setFrames() {
+        if let mainController = mainController {
+            mainController.view.frame = mainView.bounds
+        }
+        panelDrawerController.view.frame = panelVisualEffectView.contentView.bounds
     }
 
     private func setupInitialPanelConstaints() {
